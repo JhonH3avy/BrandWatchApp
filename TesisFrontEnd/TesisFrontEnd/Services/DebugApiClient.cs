@@ -8,7 +8,14 @@ namespace TesisFrontEnd.Services
 {
     public class DebugApiClient : IApiClient
     {
-        public IList<ChartData> GetDataForCategory(string category)
+        public IList<ChartData> GetDataForCategory(string category) => GetDebugData();
+
+        public async Task<IList<ChartData>> GetDataForCategoryAsync(string category)
+        {
+            return await Task.Run(() => GetDebugData());
+        }
+
+        private IList<ChartData> GetDebugData()
         {
             return new List<ChartData>
             {
@@ -20,26 +27,19 @@ namespace TesisFrontEnd.Services
                 new ChartData
                 {
                     Value = 200,
-                    Label = "april"
-                }
-            };
-        }
-
-        public Task<IList<ChartData>> GetDataForCategoryAsync(string category)
-        {
-            return new Task<IList<ChartData>>(() => new List<ChartData>
-            {
-                new ChartData
-                {
-                    Value = 100,
-                    Label = "febrary"
+                    Label = "march"
                 },
                 new ChartData
                 {
-                    Value = 200,
+                    Value = 150,
                     Label = "april"
+                },
+                new ChartData
+                {
+                    Value = 80,
+                    Label = "may"
                 }
-            });
+            };
         }
     }
 }

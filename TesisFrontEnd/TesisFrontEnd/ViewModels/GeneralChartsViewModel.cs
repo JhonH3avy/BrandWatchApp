@@ -4,29 +4,38 @@ using Entry = Microcharts.Entry;
 using System.Linq;
 using Microcharts.Forms;
 using SkiaSharp;
+using Microcharts;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TesisFrontEnd.ViewModels
 {
     public class GeneralChartsViewModel : BaseViewModel
     {
-        public GeneralChartsViewModel(ChartView chart)
+        private Chart _generalChart;
+
+        public GeneralChartsViewModel()
         {
-            GeneralChart = chart;
             ServiceClient = ApiClientFactory.GetApiClient(ApiClientType.DebugApiClient);
-            Data = new ObservableCollection<Entry>();
         }
 
         public IApiClient ServiceClient { get; private set; }
 
-        public ChartView GeneralChart { get; set; }
-
-        public ObservableCollection<Entry> Data { get; private set; }
-
-        public async void RefreshData()
+        public Chart GeneralChart
         {
-            Data.Clear();
+            get => _generalChart;
+            set
+            {
+                _generalChart = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public async Task RefreshData()
+        {
+            var data = new List<Entry>();
             var chartData = await ServiceClient.GetDataForCategoryAsync("General");
-            chartData.AsParallel().ForAll((cd) =>
+            chartData.ToList().ForEach((cd) =>
             {
                 var entry = new Entry(cd.Value)
                 {
@@ -34,11 +43,11 @@ namespace TesisFrontEnd.ViewModels
                     ValueLabel = cd.Value.ToString(),
                     Color = SKColor.Parse("#FF1493")
                 };
-                Data.Add(entry);
+                data.Add(entry);
             });
-            GeneralChart.Chart = new Microcharts.BarChart
+            GeneralChart = new BarChart
             {
-                Entries = Data
+                Entries = data
             };
         }
     }

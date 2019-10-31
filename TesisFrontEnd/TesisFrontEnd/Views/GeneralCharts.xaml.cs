@@ -18,32 +18,15 @@ namespace TesisFrontEnd.Views
         public GeneralCharts()
         {
             InitializeComponent();
-            //BindingContext = new GeneralChartsViewModel(GeneralChart);
-            Entries = new List<Entry>
-            {
-                new Entry(100)
-                {
-                    ValueLabel = "100",
-                    Label = "febrary"
-                },
-                new Entry(200)
-                {
-                    ValueLabel = "200",
-                    Label = "april"
-                }
-            };
-            GeneralChart.Chart = new BarChart
-            {
-                Entries = Entries
-            };
+            BindingContext = new GeneralChartsViewModel();
         }
         
         public IList<Entry> Entries { get; set; }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //((GeneralChartsViewModel)BindingContext).RefreshData();
+            await ((GeneralChartsViewModel)BindingContext).RefreshData();
         }
     }
 }

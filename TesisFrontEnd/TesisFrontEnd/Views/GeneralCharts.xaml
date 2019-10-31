@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:charts="clr-namespace:Microcharts;assembly=Microcharts"
              mc:Ignorable="d"
              x:Class="TesisFrontEnd.Views.GeneralCharts">
     <ContentPage.Content>
         <StackLayout>
-            <forms:ChartView x:Name="GeneralChart" HeightRequest="150"/>
+            <forms:ChartView x:Name="GeneralChart" HeightRequest="150" Chart="{Binding GeneralChart}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
