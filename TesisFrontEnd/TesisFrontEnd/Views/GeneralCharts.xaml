@@ -4,12 +4,20 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             xmlns:charts="clr-namespace:Microcharts;assembly=Microcharts"
              mc:Ignorable="d"
              x:Class="TesisFrontEnd.Views.GeneralCharts">
     <ContentPage.Content>
-        <StackLayout>
-            <forms:ChartView x:Name="GeneralChart" HeightRequest="150" Chart="{Binding GeneralChart}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Cantidad de Tweets analizados" />
+                <forms:ChartView HeightRequest="150" Chart="{Binding GeneralAmountChart}"/>
+
+                <Label Text="Porcentaje de polarización" />
+                <forms:ChartView HeightRequest="150" Chart="{Binding GeneralPercentageChart}"/>
+
+                <Label Text="Ciudades involucradas" />
+                <forms:ChartView HeightRequest="150" Chart="{Binding GeneralCitiesChart}"/>
+            </StackLayout>
+        </ScrollView>        
     </ContentPage.Content>
 </ContentPage>

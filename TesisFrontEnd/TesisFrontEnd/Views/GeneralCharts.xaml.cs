@@ -1,14 +1,6 @@
-﻿using Microcharts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TesisFrontEnd.Services;
-using TesisFrontEnd.ViewModels;
+﻿using TesisFrontEnd.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Entry = Microcharts.Entry;
 
 namespace TesisFrontEnd.Views
 {
@@ -18,15 +10,13 @@ namespace TesisFrontEnd.Views
         public GeneralCharts()
         {
             InitializeComponent();
-            BindingContext = new GeneralChartsViewModel();
+            BindingContext = new GeneralChartsViewModel(Models.CategoryType.General);
         }
-        
-        public IList<Entry> Entries { get; set; }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await ((GeneralChartsViewModel)BindingContext).RefreshData();
+            await ((GeneralChartsViewModel)BindingContext).RefreshData().ConfigureAwait(false);
         }
     }
 }

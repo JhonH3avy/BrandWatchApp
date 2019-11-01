@@ -8,8 +8,12 @@ namespace TesisFrontEnd.Services
 {
     public interface IApiClient
     {
-        IList<ChartData> GetDataForCategory(string category);
+        IList<ChartData> GetAmountDataForCategory(CategoryType category);
+        IList<ChartData> GetPercentageDataForCategory(CategoryType category);
+        IList<ChartData> GetCitiesDataForCategory(CategoryType category);
 
-        Task<IList<ChartData>> GetDataForCategoryAsync(string category);
+        Task<IList<ChartData>> GetAmountDataForCategoryAsync(CategoryType category);
+        Task<IList<ChartData>> GetPercentageDataForCategoryAsync(CategoryType category);
+        Task<IList<ChartData>> GetCitiesDataForCategoryAsync(CategoryType category);
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using TesisFrontEnd.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +10,13 @@ namespace TesisFrontEnd.Views
         public TicketsCharts()
         {
             InitializeComponent();
+            BindingContext = new GeneralChartsViewModel(Models.CategoryType.Tickets);
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await ((GeneralChartsViewModel)BindingContext).RefreshData().ConfigureAwait(false);
         }
     }
 }

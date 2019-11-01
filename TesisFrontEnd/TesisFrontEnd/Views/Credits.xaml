@@ -7,9 +7,7 @@
              x:Class="TesisFrontEnd.Views.Credits">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Esta aplicación fue creada por Jhon Robinson Contreras (jrcontrerasca@gmail.com) y David Jesus Ojeda ()"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
