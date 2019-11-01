@@ -7,7 +7,7 @@
              x:Class="TesisFrontEnd.Views.Credits">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Esta aplicación fue creada por Jhon Robinson Contreras (jrcontrerasca@gmail.com) y David Jesus Ojeda ()"/>
+            <Label Text="Esta aplicación fue creada por Jhon Robinson Contreras (jrcontrerasca@gmail.com) y David Jesus Ojeda (david20lopez@hotmail.com)"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
